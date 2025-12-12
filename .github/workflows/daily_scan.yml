@@ -1,0 +1,33 @@
+name: Weekly Paper Scanner
+
+on:
+  schedule:
+    # 这里的 cron 语法代表：每周五 UTC时间 08:00 (北京时间 16:00) 运行
+    - cron: '0 8 * * 5'
+  # 允许手动点击按钮触发（方便测试）
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run script
+      env:
+        ADS_TOKEN: ${{ secrets.ADS_TOKEN }}
+        SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+        SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
+        RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+      run: python main.py
