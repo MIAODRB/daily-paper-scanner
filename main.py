@@ -11,8 +11,6 @@ from datetime import date, timedelta
 keywords_tech = [
     '"Deep learning"', 
     '"Neural network"', 
-    '"Machine learning"', 
-    '"Artificial intelligence"', 
     '"CNN"', 
     '"Object detection"'
 ]
@@ -31,18 +29,17 @@ keywords_scene = [
 # 3. 指定期刊的 Bibstem (ADS 标准缩写)
 # Icarus, JGR-Planets, P&SS, EPSL, GRL, ISPRS, TGRS
 target_journals = [
-    "Icarus", 
+    "Icar", 
     "JGRE",   # JGR Planets
     "P&SS",   # Planetary and Space Science
-    "EPSL",   # Earth and Planetary Science Letters
     "GeoRL",  # Geophysical Research Letters
-    "IsPRS",  # ISPRS Journal of Photogrammetry and Remote Sensing (注: ADS缩写有时变动，IsPRS较常用)
+    "ISPAr",  # ISPRS Journal of Photogrammetry and Remote Sensing (注: ADS缩写有时变动，IsPRS较常用)
     "ITGRS"   # IEEE Transactions on Geoscience and Remote Sensing
 ]
 
 # ===========================================
 
-def get_date_range(days=7):
+def get_date_range(days=30):
     """获取过去N天的日期范围，格式 YYYY-MM-DD"""
     today = date.today()
     start_date = today - timedelta(days=days)
